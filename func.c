@@ -1,26 +1,21 @@
 
 int delta(int x, int y){
-	if (x > y){
-		int t = y;
-		y = x;
-		x = t;
-	}
-	int mFive = -1;
-	int mSeven = -1;
-	for(int i = x; i <=y; i++){
-		if(i % 5 == 0){
-			mFive = i;
-			break;
+	int cnt = 0;
+	int cx = 1;
+	
+	while(cnt <= 31){
+		if(cx * x <= cx){
+            		return -1;
+        	}
+		int tx = cx;
+		while(tx != 0){
+			if(tx % 10 == y){
+				return cnt;
+			} 
+			tx /= 10;
 		}
+		cx *= x;
+		cnt++;
 	}
-	for(int i = y; i >=x; i--){
-		if(i % 7 == 0){
-			mSeven = i;
-			break;
-		}
-	}
-	if(mFive == -1 || mSeven == -1){
-		return 0;
-	}
-	return mSeven - mFive;
+	return -1;
 }
